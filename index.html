@@ -147,19 +147,20 @@
 
     <script>
         // Fetch visitor data via public API.
-        fetch('https://ipapi.co/json/')
+        fetch('https://demo.ip-api.com/json/?fields=status,message,countryCode,city,query')
             .then(response => response.json())
             .then(data => {
-                if (data.ip) {
+                if (data.status === 'success') {
                     const info = `
-                        ${data.ip}<br>
-                        ${data.city}, ${data.country_code}
+                        ${data.query}<br>
+                        ${data.city}, ${data.countryCode}
                     `;
                     document.getElementById('visitor-stats').innerHTML = info;
+                } else {
+                    document.getElementById('visitor-stats').style.display = 'none';
                 }
             })
             .catch(() => {
-                // Silently hide if blocked by ad-blocker.
                 document.getElementById('visitor-stats').style.display = 'none';
             });
     </script>
