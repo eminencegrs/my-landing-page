@@ -137,7 +137,6 @@
     <div class="background-overlay"></div>
     
     <div class="container">
-        <h1>dariien.co</h1>
         <div class="status-badge">
             <span class="dot"></span>
             Online
@@ -147,20 +146,20 @@
     <div class="visitor-info" id="visitor-stats">Connecting...</div>
 
     <script>
-        // Fetch visitor data via public API
+        // Fetch visitor data via public API.
         fetch('https://ipapi.co/json/')
             .then(response => response.json())
             .then(data => {
                 if (data.ip) {
                     const info = `
-                        IP: ${data.ip}<br>
-                        LOC: ${data.city}, ${data.country_code}
+                        ${data.ip}<br>
+                        ${data.city}, ${data.country_code}
                     `;
                     document.getElementById('visitor-stats').innerHTML = info;
                 }
             })
             .catch(() => {
-                // Silently hide if blocked by ad-blocker
+                // Silently hide if blocked by ad-blocker.
                 document.getElementById('visitor-stats').style.display = 'none';
             });
     </script>
