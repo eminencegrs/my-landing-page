@@ -91,6 +91,21 @@
             opacity: 0.8;
         }
 
+        /* Corner Visitor Info Style */
+        .visitor-info {
+            position: absolute;
+            bottom: 20px;
+            right: 25px;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 0.7rem;
+            color: #475569;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            z-index: 20;
+            text-align: right;
+            line-height: 1.6;
+        }
+
         .dot {
             width: 8px;
             height: 8px;
@@ -122,10 +137,32 @@
     <div class="background-overlay"></div>
     
     <div class="container">
+        <h1>dariien.co</h1>
         <div class="status-badge">
             <span class="dot"></span>
             Online
         </div>
     </div>
+
+    <div class="visitor-info" id="visitor-stats">Connecting...</div>
+
+    <script>
+        // Fetch visitor data via public API
+        fetch('https://ipapi.co/json/')
+            .then(response => response.json())
+            .then(data => {
+                if (data.ip) {
+                    const info = `
+                        IP: ${data.ip}<br>
+                        LOC: ${data.city}, ${data.country_code}
+                    `;
+                    document.getElementById('visitor-stats').innerHTML = info;
+                }
+            })
+            .catch(() => {
+                // Silently hide if blocked by ad-blocker
+                document.getElementById('visitor-stats').style.display = 'none';
+            });
+    </script>
 </body>
 </html>
