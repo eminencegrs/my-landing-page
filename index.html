@@ -3,44 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Site Under Construction</title>
+    <title>dariien.co | Coming Soon</title>
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        :root {
+            --bg-color: #0f172a;
+            --accent-1: #38bdf8;
+            --accent-2: #818cf8;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: white;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f4f4f9;
-            color: #333;
+            overflow: hidden;
         }
+
+        /* Abstract Background Graphic */
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(56, 189, 248, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(129, 140, 248, 0.15) 0%, transparent 40%);
+            filter: blur(80px);
+        }
+
+        /* Floating Animation for the Graphic */
+        .orb {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--accent-1), var(--accent-2));
+            opacity: 0.1;
+            animation: float 20s infinite alternate ease-in-out;
+        }
+
+        @keyframes float {
+            from { transform: translate(-10%, -10%) rotate(0deg); }
+            to { transform: translate(10%, 10%) rotate(360deg); }
+        }
+
         .container {
             text-align: center;
-            padding: 2rem;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.03);
+            padding: 3rem;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
-        h1 { margin-bottom: 0.5rem; }
-        p { color: #666; }
-        .status-badge {
-            display: inline-block;
-            background: #e1f5fe;
-            color: #0288d1;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            margin: 0;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            color: #94a3b8;
+            font-size: 1.1rem;
             margin-top: 1rem;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-1);
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-1);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-1);
         }
     </style>
 </head>
 <body>
+    <div class="background"></div>
+    <div class="orb"></div>
+    
     <div class="container">
-        <h1>Coming Soon</h1>
-        <p>This site is successfully hosted on GitHub Pages.</p>
-        <div class="status-badge">DNS Verified & Active</div>
+        <h1>dariien.co</h1>
+        <p>Building something new.</p>
+        <div class="status-badge">
+            <span class="dot"></span>
+            System Online
+        </div>
     </div>
 </body>
 </html>
