@@ -155,12 +155,12 @@
                 if (!response.ok) throw new Error('Primary API limited');
     
                 const data = await response.json();
-                statsElement.innerHTML = `IP: ${data.ip}<br>LOC: ${data.city}, ${data.country_code}`;
+                statsElement.innerHTML = `${data.ip}<br>${data.city}, ${data.country_code}`;
             } catch (error) {
                 fetch('https://api.ipify.org?format=json')
                     .then(res => res.json())
                     .then(data => {
-                        statsElement.innerHTML = `IP: ${data.ip}<br>LOC: NODE_REMOTE`;
+                        statsElement.innerHTML = `${data.ip}`;
                     })
                     .catch(() => {
                         statsElement.style.display = 'none';
